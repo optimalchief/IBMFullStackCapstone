@@ -27,7 +27,10 @@ DEBUG = True
 
 APPEND_SLASH = True
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ["localhost",'127.0.0.1', "714dealerreview.mybluemix.net", "714dealerreview.mybluemix.net/static"]
+
+LOGOUT_REDIRECT_URL='/djangoapp'
+LOGIN_REDIRECT_URL='/djangoapp'
 
 
 # Application definition

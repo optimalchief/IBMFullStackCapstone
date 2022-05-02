@@ -10,10 +10,31 @@ from datetime import datetime
 import logging
 import json
 
+from .forms import UserRegisterForm
+
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
+def Home(request):
+    return render(request, 'djangoapp/pages/home.html')
 
+def About(request):
+    return render(request, 'djangoapp/pages/about.html')
+
+def Contact(request):
+    return render(request, 'djangoapp/pages/contact.html')
+
+def signUp(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('/djangoapp')
+
+    else:
+        form = UserRegisterForm()
+    return render(request, 'djangoapp/pages/registration.html', {'form': form})
 # Create your views here.
 
 
